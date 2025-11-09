@@ -1,8 +1,12 @@
 // TO-DO 
-// 1) pasar la busqueda con local storage a resultados.html
 // 2) agregar un listener para q a medida q va tipeando se muestren las busquedas previas
 // 3) agregar un "borrar historial de busquedas"
 // 4) mejorar el diseño q es un horrorrrrrrr
+// 5) agregar fecha "desde - hasta" para la busqueda, seleccion de idioma y categoria
+// 6) paginacion
+// 7) depurar noticias q vienen mal armadas, que les falta algun dato o imagen
+// 8) poner el %20 para separar los terminos cuando tengo mas de una palabra en las busquedas
+// PROBLEMA: no logro que funcione la paginacion, al hacer clic en pag sig "q-buscar" se esta guardando mal en localstorage, y no logro aumentar el indice de pagina con ++, resta ademas armar la f para pag anterior haciendo "historial-1" 
 
 // API Noticias: NewsData.io
 // URL = " https://newsdata.io/api/1/latest?apikey=pub_0dd1e5de885f4957a9053481e57d279b&q=pizza"
@@ -19,7 +23,7 @@ const sobreMi = document.getElementById('sobre-mi')
 const btSobreMi = document.getElementById('bt-sobre-mi')
 const btOk = document.getElementById('bt-ok')
 
-const inputBuscar = document.getElementById('terminos')
+const inputBuscar = document.getElementById('input-buscar')
 const btBuscar = document.getElementById('bt-buscar')
 
 
@@ -28,16 +32,21 @@ const btBuscar = document.getElementById('bt-buscar')
 // DEFINO FUNCIONES
 //*************************************************************
 
-// Capturar términos ------------------------------------------------
-
-// Función que ejecuta la búsqueda
+// voy a probar si se puede eliminar la creacion de texto - FUNCIONA!
 function ejecutarBusqueda() {
-    const texto = inputBuscar.value.trim()
-    if (texto !== "") {
-        console.log("Buscando:", texto)
-        // (1)
-    }
+    // tomo el valor del input del buscador
+    inputBuscar.value.trim()
+    // si no está vacio, lo guardo en localstorage
+    localStorage.setItem('q-buscar', inputBuscar.value)
+    // reinicio pagina
+    localStorage.setItem("pagina", 1)
+    // remuevo el pageString de la busqueda actual para evitar residuos
+    localStorage.removeItem("nextPageString")
+    // recargo la pagina
+    window.location.href = "./pages/resultados.html"
 }
+
+
 
 
 // Mostrar "Sobre mi" ------------------------------------------------
