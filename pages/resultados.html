@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- CSS y JS propios -->
     <link href="../css/style.css" rel="stylesheet">
-    <script defer src="../js/resultados.js"></script>
+    <script type="module" defer src="../src/main.js"></script>
 </head>
 
 <body class="bg-light">
@@ -42,11 +42,11 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <a href="../index.html" class="navbar-brand">
-                    <img src="../images/logo.png" alt="Buscame esta noticia!" class="logo">
+                    <img src="../images/logo.png" alt="Buscame esta noticia!" class="logo" id="logo">
                 </a>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        id="input-buscar" />
+                    <input class="form-control me-2" type="search" placeholder="Buscar otra noticia feliz..."
+                        aria-label="Buscar otra noticia feliz" id="input-buscar" />
                     <button class="btn btn-outline-success" type="submit" id="bt-buscar"><i
                             class="bi bi-search-heart"></i>
                         Buscar</button>
@@ -70,16 +70,17 @@
 
 
         <!-- Resultados -->
-        <div id="resultados-container" class="resultados">
+        <div id="resultados-container" class="text-center mt-3 resultados">
         </div>
 
         <!-- Cards -->
-        <div id="card-container">
+        <div id="card-container" class="row justify-content-center mt-4">
         </div>
 
         <!-- Pagination -->
-        <div id="paginas-container">
+        <div id="paginacion-container" class="mt-4">
         </div>
+
     </div>
 
     <!-- Bootstrap JS -->
